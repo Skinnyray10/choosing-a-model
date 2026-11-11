@@ -5,14 +5,20 @@ https://platform.claude.com/docs/en/about-claude/models/choosing-a-model
 
 A skill for coding agents (`SKILL.md` format) that recommends a Claude model, effort level and orchestrator/subagent split, based on Anthropic's official guide.
 
+## Estructura / Layout
+
+- `choosing-a-model/SKILL.md`: las reglas (portable).
+- `choosing-a-model/references/models.md`: datos de modelos, con fuente y fecha de última verificación.
+- `agents/`: subagentes opcionales solo para Claude Code (ver `agents/README.md`).
+
 ## Uso / Usage
 
-- **Claude Code / agentes con skills:** copia la carpeta `choosing-a-model/` a tu carpeta de skills y pregunta, por ejemplo, "¿qué modelo uso para este agente?".
-- **Chatbot normal:** pega el contenido de `choosing-a-model/SKILL.md` en el chat o en un prompt de sistema.
+- **Claude Code / agentes con skills:** copia la carpeta `choosing-a-model/` (con `references/`) a tu carpeta de skills y pregunta, por ejemplo, "¿qué modelo uso para este agente?".
+- **Chatbot normal:** pega `choosing-a-model/SKILL.md` y `references/models.md` en el chat o en un prompt de sistema.
 
-## Alcance / Scope
+## Mantenimiento / Maintenance
 
-- Basada en la documentación a fecha 2026-11-10. Los modelos y sus valores por defecto cambian: verifica en la fuente.
+- Los datos de modelos cambian. Cada entrada de `references/models.md` lleva su fuente y la fecha de verificación; la skill pide revisar la fuente si tiene más de 30 días.
 - La guía oficial no detalla reglas de subagentes; la sección de heurísticas está marcada como criterio del autor.
 - Proyecto no oficial, no afiliado a Anthropic.
 
