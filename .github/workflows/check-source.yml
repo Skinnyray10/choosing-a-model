@@ -1,0 +1,42 @@
+name: check-source
+
+on:
+  schedule:
+    - cron: "0 15 1 * *" # monthly, day 1, 15:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compare the guide with the stored hash
+        id: check
+        run: |
+          set +e
+          bash scripts/check_source.sh
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Open an issue if the guide changed
+        if: steps.check.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create source-changed --color FBCA04 \
+            --description "Anthropic's guide changed" 2>/dev/null || true
+          if [ -z "$(gh issue list --label source-changed --state open --json number --jq '.[].number')" ]; then
+            gh issue create --label source-changed \
+              --title "Anthropic's model-selection guide changed" \
+              --body "The guide at https://platform.claude.com/docs/en/about-claude/models/choosing-a-model no longer matches snapshot/guide.sha256. Review it, update choosing-a-model/references/models.md and its last-verified date, run \`bash scripts/check_source.sh update\`, commit, and close this issue."
+          fi
+
+      - name: Fail if the check itself broke
+        if: steps.check.outputs.code != '0' && steps.check.outputs.code != '1'
+        run: |
+          echo "check_source.sh failed with code ${{ steps.check.outputs.code }}"
+          exit 1
