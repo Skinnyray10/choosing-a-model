@@ -1,6 +1,10 @@
 # Claude model facts
 
-- **Source:** https://platform.claude.com/docs/en/about-claude/models/choosing-a-model
+- **Sources:** the selection guide,
+  https://platform.claude.com/docs/en/about-claude/models/choosing-a-model
+  (watched by the monthly check), and the models overview,
+  https://platform.claude.com/docs/en/models/overview (not watched; used for the
+  Sonnet 5.5 and Haiku 5.5 IDs).
 - **Last verified:** 2026-11-10
 - Update this file, and the date, whenever the source changes. Keep rules out of
   here; they belong in `SKILL.md`.
@@ -11,11 +15,12 @@
 |---|---|---|---|
 | Maximum capability | Fable 5.2 | `claude-fable-5-2` | Hours-long agent sessions, deep multi-step research, final documents/decks |
 | Complex agentic coding, enterprise work | Opus 5.5 | `claude-opus-5-5` | Multi-hour coding agents, large refactors, computer use |
-| Speed and capability for daily use | Sonnet 5.5 | `claude-sonnet-5-5`* | Code generation, data analysis, content, tool use in agents |
-| Lowest latency and price | Haiku 5.5 | `claude-haiku-5-5`* | Real-time, bulk processing, cost-sensitive work, subagent tasks |
+| Speed and capability for daily use | Sonnet 5.5 | `claude-sonnet-5-5` | Code generation, data analysis, content, tool use in agents |
+| Lowest latency and price | Haiku 5.5 | `claude-haiku-5-5` | Real-time, bulk processing, cost-sensitive work, subagent tasks |
 
-\* The guide page does not list these two IDs. Confirm them in Anthropic's
-models overview before relying on them.
+The guide page does not list the Sonnet 5.5 and Haiku 5.5 IDs; they come from
+the models overview. Prices, context windows and output limits are not kept
+here: check the models overview for them.
 
 Mythos 5.2 (`claude-mythos-5-2`) has Fable 5.2 capability but is only for
 organizations verified through programs such as the Cyber Verification Program.

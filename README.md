@@ -10,6 +10,7 @@ A skill for coding agents (`SKILL.md` format) that recommends a Claude model, ef
 - `choosing-a-model/SKILL.md`: las reglas (portable).
 - `choosing-a-model/references/models.md`: datos de modelos, con fuente y fecha de última verificación.
 - `agents/`: subagentes opcionales solo para Claude Code (ver `agents/README.md`).
+- `examples/cases.md`: casos de prueba manuales (qué debe y qué no debe responder la skill).
 
 ## Uso / Usage
 
