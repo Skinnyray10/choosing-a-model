@@ -19,6 +19,7 @@ A skill for coding agents (`SKILL.md` format) that recommends a Claude model, ef
 ## Mantenimiento / Maintenance
 
 - Los datos de modelos cambian. Cada entrada de `references/models.md` lleva su fuente y la fecha de verificación; la skill pide revisar la fuente si tiene más de 30 días.
+- Una GitHub Action (`.github/workflows/check-source.yml`) compara cada mes el hash de la guía oficial con `snapshot/guide.sha256` y abre un issue si cambió. Solo detecta: actualizar `references/models.md` y la fecha es revisión humana. Después se corre `bash scripts/check_source.sh update` y se hace commit.
 - La guía oficial no detalla reglas de subagentes; la sección de heurísticas está marcada como criterio del autor.
 - Proyecto no oficial, no afiliado a Anthropic.
 
