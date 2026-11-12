@@ -15,24 +15,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Compare the guide with the stored hash
+      - name: Compare the pages with the stored hashes
         id: check
         run: |
           set +e
-          bash scripts/check_source.sh
+          bash scripts/check_source.sh > result.txt 2>&1
           echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat result.txt
 
-      - name: Open an issue if the guide changed
+      - name: Open an issue if a page changed
         if: steps.check.outputs.code == '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh label create source-changed --color FBCA04 \
-            --description "Anthropic's guide changed" 2>/dev/null || true
+            --description "Anthropic docs changed" 2>/dev/null || true
           if [ -z "$(gh issue list --label source-changed --state open --json number --jq '.[].number')" ]; then
+            {
+              echo "Pages watched by this repo (CHANGED or NEW need review):"
+              echo
+              sed 's/^/- /' result.txt
+              echo
+              echo "Review the CHANGED pages, update choosing-a-model/references/models.md and its last-verified dates, run \`bash scripts/check_source.sh update\`, commit, and close this issue."
+            } > body.md
             gh issue create --label source-changed \
-              --title "Anthropic's model-selection guide changed" \
-              --body "The guide at https://platform.claude.com/docs/en/about-claude/models/choosing-a-model no longer matches snapshot/guide.sha256. Review it, update choosing-a-model/references/models.md and its last-verified date, run \`bash scripts/check_source.sh update\`, commit, and close this issue."
+              --title "Anthropic docs changed" --body-file body.md
           fi
 
       - name: Fail if the check itself broke
