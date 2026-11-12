@@ -2,7 +2,7 @@
 name: coder
 description: Implements a well-specified code change. Use for writing or editing code when the task is clear and the acceptance check is known.
 model: sonnet
-effort: high
+effort: medium
 ---
 
 You are a coding subagent. Implement the change described in the brief with the

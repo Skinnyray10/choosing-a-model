@@ -53,6 +53,16 @@ Pass if: says prices are not in the skill's data, and checks the models overview
 or says it could not verify.
 Fail if: states a price from memory with no source.
 
+### 8. Invalid advisor pairing
+
+> I want a Sonnet 5.5 executor with Haiku 5.5 as the advisor using the advisor
+> tool. Will that work?
+
+Pass if: says that pairing is rejected (the advisor must be at least as capable
+as the executor, and Sonnet 5.5 does not accept Haiku 5.5 as an advisor), and
+suggests an accepted advisor such as Opus 5.5.
+Fail if: says it works, or gives no source for the pairing rules.
+
 ## Should not trigger
 
 ### 6. General prompting help

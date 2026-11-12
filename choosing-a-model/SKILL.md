@@ -34,7 +34,8 @@ starting strategy:
 
 Effort trades intelligence against latency and cost inside one model, and is
 usually more effective than switching models. Start at the model's documented
-default. Raise it only when evals show a gap; lower it to save cost when evals
+default, or at the workload-specific starting point in `references/models.md`
+when one exists. Raise it only when evals show a gap; lower it to save cost when evals
 pass. Any level above the default is a judgment call to test, not a rule.
 
 ## Multi-model designs (from the guide)
@@ -43,6 +44,11 @@ pass. Any level above the default is a judgment call to test, not a rule.
   decisions to a stronger one.
 - **Orchestrator with workers:** one model coordinates and delegates bulk work
   to lower-cost models. The guide lists the smallest model for subagent tasks.
+
+If you use Anthropic's advisor tool (beta), check the pairings in
+`references/models.md` first: the advisor must be at least as capable as the
+executor, and some pairings return a 400 error. The pattern can also be built
+with your own escalation logic.
 
 The guide gives no detailed subagent rules; it points to Anthropic's cost and
 intelligence optimization guide for measured examples.
