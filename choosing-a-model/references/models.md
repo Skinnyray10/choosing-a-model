@@ -1,12 +1,13 @@
 # Claude model facts
 
-- **Sources:** the selection guide (watched by the monthly check),
-  https://platform.claude.com/docs/en/about-claude/models/choosing-a-model
-  Not watched: the models overview (Sonnet 5.5 and Haiku 5.5 IDs),
+- **Sources** (all watched by the monthly check, see `scripts/check_source.sh`):
+  the selection guide,
+  https://platform.claude.com/docs/en/about-claude/models/choosing-a-model ;
+  the models overview (Sonnet 5.5 and Haiku 5.5 IDs),
   https://platform.claude.com/docs/en/models/overview ; the Sonnet 5.5
   what's-new page (effort starting points, breaking changes),
-  https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5 ; and the
-  advisor tool page (pairings),
+  https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5 ; and
+  the advisor tool page (pairings),
   https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool
 - **Last verified:** 2026-11-10 (guide and IDs); 2026-11-11 (sections marked below)
 - Update this file, and the date, whenever the source changes. Keep rules out of
